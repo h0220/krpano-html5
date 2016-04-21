@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>krpano.com - mobile</title>
+	<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta http-equiv="x-ua-compatible" content="IE=edge" />
+
+    <link type="text/css" rel="stylesheet" href="../common/css/page.css">
+    <link type="text/css" rel="stylesheet" href="../common/css/reset.css">
+    <link type="text/css" rel="stylesheet" href="../common/css/n.css">
+    <link type="text/css" rel="stylesheet" href="../common/css/common.css">
+    <link type="text/css" rel="stylesheet" href="../common/css/swiper3.08.min.css">
+	<style>
+		@-ms-viewport { width: device-width; }
+		@media only screen and (min-device-width: 800px) { html { overflow:hidden; } }
+		html { height:100%; }
+		body { height:100%; overflow:hidden; margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#FFFFFF; background-color:#000000; }
+
+		* {transition-timing-function: ease-out !important;}
+	.open {width:63px !important;height:63px !important;
+	}
+	.close{width:53px !important;height:53px !important;}
+    @-webkit-keyframes handclick {
+        0% {-webkit-transform: rotate3d(1, 0, 0, 0deg);}
+        25% {-webkit-transform: rotate3d(1, 0, 0, 10deg);}
+        50% {-webkit-transform: rotate3d(1, 0, 0, 20deg);}
+        75%{-webkit-transform: rotate3d(1, 0, 0, 30deg);}
+        100%{-webkit-transform: rotate3d(1, 0, 0, 40deg);}
+    }
+
+    @-moz-keyframes handclick {
+        0% {-moz-transform: rotate3d(1, 0, 0, 0deg);}
+        25% {-moz-transform: rotate3d(1, 0, 0, 10deg);}
+        50% {-moz-transform: rotate3d(1, 0, 0, 20deg);}
+        75%{-moz-transform: rotate3d(1, 0, 0, 30deg);}
+        100%{-moz-transform: rotate3d(1, 0, 0, 40deg);}
+    }
+
+    @-ms-keyframes handclick {
+        0% {-ms-transform: rotate3d(1, 0, 0, 0deg);}
+        25% {-ms-transform: rotate3d(1, 0, 0, 10deg);}
+        50% {-ms-transform: rotate3d(1, 0, 0, 20deg);}
+        75%{-ms-transform: rotate3d(1, 0, 0, 30deg);}
+        100%{-ms-transform: rotate3d(1, 0, 0, 40deg);}
+    }
+
+    @keyframes handclick {
+        0% {transform: rotate3d(1, 0, 0, 0deg);}
+        25% {transform: rotate3d(1, 0, 0, 10deg);}
+        50% {transform: rotate3d(1, 0, 0, 20deg);}
+        75%{transform: rotate3d(1, 0, 0, 30deg);}
+        100%{transform: rotate3d(1, 0, 0, 40deg);}
+    }
+
+    .transitionOpen {
+        animation: handclick 1s linear infinite;
+        -webkit-animation: handclick 1s linear infinite;
+        -moz-animation: handclick 1s linear infinite;
+        -ms-animation: handclick 1s linear infinite;
+        -o-animation: handclick 1s linear infinite;
+    }
+    .center_B{position:absolute;z-index:-1;top:50%;left:50%}
+    .popimg{position:absolute;left:0;top:50%;}
+	</style>
+	<script src="../common/js/jquery-2.1.0.min.js"></script>
+    <script src="../common/js/isDevice.js"></script>
+</head>
+<body>
+
+<div id="loading" style="display: block;opacity:1">
+    <img width="32" height="32" alt="" src="../common/images/loading.gif">
+</div>
+<div class="closedes">
+    <img src="../common/images/_bg_04.png">
+</div>
+<div class="poplayer" id="poplayer">
+    <div class="pop1 pop">
+    </div>
+    <div class="pop2 pop">
+        <div class="smallIcon" onclick="playVideo(1)">
+            <img src="../common/images/videoPlay.png">
+        </div>
+    </div>
+</div>
+<div class="videoLay videoLay1" id="videoLay1">
+    <video src="../common/1and.mp4" preload="auto"></video>
+    <div class="closedesfuck">
+        <img src="../common/images/_bg_04.png">
+    </div>
+</div>
+<div class="smallGa" id="smallGa">
+    <img src="../common/images/_bg_02.png">
+</div>
+<div class="rightBanner" id="rightBanner">
+    <img src="../common/images/_ditu_01.png">
+    <div class="a1 circleIt" data-index="4">
+        <img src="../common/images/_ditu_02.png">
+    </div>
+    <div class="a2 circleIt" data-index="6">
+        <img src="../common/images/_ditu_02.png">
+    </div>
+    <div class="a3 circleIt" data-index="5">
+        <img src="../common/images/_ditu_02.png">
+    </div>
+    <div class="a4 circleIt" data-index="3">
+        <img src="../common/images/_ditu_02.png">
+    </div>
+    <div class="a5 circleIt" data-index="2">
+        <img src="../common/images/_ditu_02.png">
+    </div>
+    <div class="a6 circleIt hover" data-index="1">
+        <img src="../common/images/_ditu_02.png">
+    </div>
+</div>
+<div class="toNext">
+    <a href="../a1/a1.html">
+        <img src="../common/images/next.png">
+    </a>
+</div>
+<script type="text/javascript">
+$(function(){
+    var obj=parseQueryString(window.location.href);
+    if(obj['page']){
+        $('#rightBanner .circleIt').removeClass('hover').filter('div[data-index='+obj['page']+']').addClass('hover');
+    }else{
+        $('#rightBanner .circleIt').removeClass('hover').filter('div[data-index='+1+']').addClass('hover');
+    };
+    $('#rightBanner .circleIt').on('touchstart',function(){
+        var index=$(this).attr('data-index');
+        window.location.href="../a"+index+'?page='+index;
+    });
+    $('#smallGa').on('click',function(){
+        $(this).hide();
+        $('#rightBanner').show();
+    }); 
+});
+function parseQueryString(url){
+   var params = {};
+   var arr = url.split("?");
+   if (arr.length <= 1)
+      return params;
+   arr = arr[1].split("&");
+   for(var i=0, l=arr.length; i<l; i++){
+      var a = arr[i].split("=");
+      params[a[0]] = a[1];
+   }
+   return params;
+};
+</script>
+
+
+<script src="tour.js"></script>
+
+<script src="../common/js/panor.js"></script>
+<script src="../common/js/buzz.min.js"></script>
+<script src="../common/js/nlayer.js"></script>
+<script src="../common/js/swiper3.08.jquery.min.js"></script>
+
+<div id="pano" style="width:100%;height:100%;display: none;">
+	<noscript><table style="width:100%;height:100%;"><tr style="valign:middle;"><td><div style="text-align:center;">ERROR:<br/><br/>Javascript not activated<br/><br/></div></td></tr></table></noscript>
+	<script>
+		embedpano({swf:"20.swf", xml:"20.xml", target:"pano", html5:"prefer", passQueryParameters:true});
+
+		var krpano =document.getElementById("krpanoSWFObject");
+		function getlookat() {
+		    if (krpano && krpano.get)	// it can take some time until krpano is loaded and ready
+		    {
+		        krpano.call("screentosphere(mouse.x, mouse.y, toh, tov); js( showmouseinfo() );");
+		    }
+		}
+		function showmouseinfo() {
+		   var mouse_at_x = krpano.get("mouse.x");
+		    var mouse_at_y = krpano.get("mouse.y");
+		    var mouse_at_h = krpano.get("toh");
+		    var mouse_at_v = krpano.get("tov");
+		}
+		$(window).click(function () {
+		    getlookat();
+		});
+	</script>
+	<script>
+		window.onload = function () {
+		    $('#loading').css({display:'none'}).animate({opacity:0},500);
+		};
+		window.addEventListener('touchmove',function(e){
+		    e.preventDefault();
+		},false);
+	</script>
+</div>
+<div id="myMask" style="position: fixed; left: 0px; top: 0px; z-index: 100000; width: 100%; height: 100%; display: block; background:#000;"></div>
+<script type="text/javascript">	
+	var divs = document.getElementsByTagName("div");
+	setInterval(function(){		
+		for(var i =0;i<divs.length;i++){
+			if(divs[i].style.opacity=='0.67'){
+				divs[i].style.opacity = 0;
+				divs[i].style.display = "none";		
+			}
+		}
+		if(divs.length>6){
+			document.getElementById("myMask").style.display = "none";
+			document.getElementById("pano").style.display = "block";
+		}
+	},1);
+
+	$('#poplayer').addClass("Dn").find(".pop").addClass("Dn");
+	$('#titleHead .smaeit').on('touchstart',function(){
+	    var index=$(this).index();
+	    console.log(index)
+	    $('#sliderBox .myFull').css("visibility","hidden").hide().eq(index).css("visibility",'visible').show();
+	    $('#headerBox .titleboxs1').hide().eq(index).show();
+	    $('#titleHead .icons').hide().eq(index).show();
+	});
+</script>
+</body>
+</html>

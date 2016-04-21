@@ -1,0 +1,17 @@
+<krpano version="1.16">
+	
+	<!-- <include url="skin/defaultskin.xml" /> -->
+	
+	<view hlookat="0" vlookat="0" maxpixelzoom="1.0" fovmax="150" limitview="auto" />
+
+	<preview url="16.tiles/preview.jpg" />
+
+	<image>
+		<cube url="16.tiles/pano_%s.jpg" />
+		<mobile>
+			<cube url="16.tiles/mobile_%s.jpg" />
+		</mobile>
+	</image>
+<hotspot name="spot1" url="_ditu_02.png" ath="-15" atv="-7" onclick="js(xmlcallback(get(name)));" /> 
+<hotspot name="spot2" url="_ditu_02.png" ath="22" atv="15" onclick="js(xmlcallback(get(name)));" /> 
+</krpano>
